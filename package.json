@@ -1,0 +1,53 @@
+{
+  "name": "expeed-digital-signage",
+  "version": "1.0.0",
+  "description": "Expeed Software Digital Signage Controller",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build-pi": "electron-builder --linux --armv7l",
+    "build-pi4": "electron-builder --linux --arm64",
+    "dist": "electron-builder --publish=never"
+  },
+  "keywords": ["digital-signage", "electron", "raspberry-pi", "kiosk"],
+  "author": "Expeed Software",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.expeed.digitalsignage",
+    "productName": "Expeed Digital Signage",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["arm64", "armv7l", "x64"]
+        },
+        {
+          "target": "deb",
+          "arch": ["arm64", "armv7l", "x64"]
+        }
+      ],
+      "category": "Office"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    }
+  }
+}
