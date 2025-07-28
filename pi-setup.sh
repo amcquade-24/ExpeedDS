@@ -6,7 +6,7 @@
 set -e
 
 # Configuration - Update these with your repository details
-REPO_URL="https://github.com/YOUR-USERNAME/expeed-digital-signage.git"
+REPO_URL="https://github.com/amcquade-24/ExpeedDS.git"
 REPO_BRANCH="main"
 APP_DIR="/opt/expeed-signage"
 SERVICE_USER="pi"
