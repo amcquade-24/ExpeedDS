@@ -1,0 +1,42 @@
+[Unit]
+Description=Expeed Digital Signage
+Documentation=https://github.com/your-org/expeed-digital-signage
+After=graphical-session.target network-online.target
+Wants=network-online.target
+Requires=graphical-session.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+Environment=DISPLAY=:0
+Environment=NODE_ENV=production
+WorkingDirectory=/opt/expeed-signage
+ExecStart=/usr/bin/npm start
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+Restart=always
+RestartSec=10
+TimeoutStopSec=30
+StartLimitInterval=60s
+StartLimitBurst=3
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/expeed-signage
+ReadOnlyPaths=/usr/bin/npm /usr/bin/node
+
+# Resource limits (adjust for Pi model)
+MemoryLimit=1G
+CPUQuota=80%
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=expeed-signage
+
+[Install]
+WantedBy=graphical-session.target
