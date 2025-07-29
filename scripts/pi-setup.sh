@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Expeed Digital Signage - Raspberry Pi Setup Script
 # Run with: curl -fsSL https://raw.githubusercontent.com/YOUR-USERNAME/expeed-digital-signage/main/scripts/pi-setup.sh | bash
 
